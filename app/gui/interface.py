@@ -22,7 +22,7 @@ class InterfaceApp:
 
         self.processar_callback = processar_callback
         self.root = tk.Tk()
-        self.root.title("AutoTri 1.63b - Automação de Triagem")
+        self.root.title("AutoTri 1.63a - Automação de Triagem")
 
         # Guarda as credenciais default (vindas do Credential Manager) que podem ser vazias.
         self.default_creds = default_creds_CRD_MNGR
@@ -32,7 +32,7 @@ class InterfaceApp:
         self.indices_avulsos = []
         self.cancelar_event = threading.Event()
 
-        ico_name = "PBH-Iconizado.ico"
+        ico_name = "assets/PBH-Iconizado.ico"
         caminho_icone = resource_path(ico_name)
 
         try:

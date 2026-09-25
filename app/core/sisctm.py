@@ -100,13 +100,14 @@ class SisctmAuto(BotBase):
                 )
             )
             logger.info("Login validado: Interface do SISCTM carregada com sucesso no navegador.")
+            
         except Exception as e:
             logger.error(f"Falha de credenciais ou rede após o login do SISCTM: O painel não carregou. {e}")
             raise 
 
         if self.checar_popup:
                 try:
-                    checkbox_popup = WebDriverWait(self.driver, 3).until(
+                    checkbox_popup = WebDriverWait(self.driver, 5).until(
                         EC.visibility_of_element_located(
                             (By.XPATH,
                                 "//div[@role='checkbox' and @aria-label='Não mostrar novamente']")
@@ -466,7 +467,7 @@ class SisctmAuto(BotBase):
 
         # O seletor da interface atualizada (resolve o problema de captura de áreas falhando)
         PAINEL_SELETOR = "#q-app > div > div.q-drawer-container > aside > div > div.fit.row.no-scroll > div.col.bg-white > div > div.col.relative-position > div"
-
+        
         try:
             painel = self.wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, PAINEL_SELETOR))
